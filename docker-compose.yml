@@ -1,0 +1,25 @@
+version: "3"
+services:
+  eureka:
+    build: eureka-server
+    image: eureka
+    ports:
+      - 8000:80
+
+  provider:
+    build: service-provider
+    image: service-provider
+
+  consumer:
+    build: feign-consumer
+    image: feign-consumer
+
+  gateway:
+    build: zuul-gateway
+    image: zuul-gateway
+    ports:
+      - 80:80
+
+  hystrix:
+    build: hystrix-turbine
+    image: hystrix-turbine
